@@ -1,6 +1,8 @@
 require 'socket'
 require 'cgi'
-server = TCPServer.new 5678
+port = [80, ARGV[0].to_i].max
+puts "Listening on port: #{port}"
+server = TCPServer.new (port)
 
 while session = server.accept
   request = session.gets
